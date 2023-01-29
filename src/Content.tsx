@@ -1,16 +1,17 @@
-import "./Content.css"
+import classes from "./Content.module.css"
 
 type Props = {
     text: string
     text2: string
     year: number
 }
+console.log(classes)
 const Content = (props: Props) => {
   
     return (
         <>
             <p
-               className="content"
+               className={`${classes.text}`}
             >
                 {props.text}
             </p>
