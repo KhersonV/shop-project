@@ -1,28 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import Content from './Content'
 
 interface ITitleProps {
     text: string
 }
 
-type ContentProps = {
-    text: string
-    text2: string
-    year: number
-}
-
 const Title = (props: ITitleProps) => {
     return <h1>Hello {props.text}</h1>
-}
-
-const Content = (props: ContentProps) => {
-    return (
-        <React.Fragment>
-            <p>{props.text}</p>
-            <p>{props.text2}</p>
-            <div> {props.year}</div>
-        </React.Fragment>
-    )
 }
 
 function App() {
