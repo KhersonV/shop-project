@@ -5,7 +5,6 @@ type Props = {
     text2: string
     year: number
 }
-console.log(classes)
 const Content = (props: Props) => {
   
     return (
