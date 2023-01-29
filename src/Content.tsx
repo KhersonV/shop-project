@@ -4,9 +4,18 @@ type Props = {
     year: number
 }
 const Content = (props: Props) => {
+  let data = true
     return (
         <>
-            <p>{props.text}</p>
+            <p
+                style={{
+                    color: data ? 'yellow' : 'White',
+                    backgroundColor: 'green',
+                    padding: `15px`,
+                }}
+            >
+                {props.text}
+            </p>
             <p>{props.text2}</p>
             <div> {props.year}</div>
         </>
