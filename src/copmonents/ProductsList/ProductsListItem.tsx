@@ -1,5 +1,6 @@
 import { Button, Card, CardActions, CardContent } from '@mui/material'
 import './ProductsListItem.scss'
+import productsArray from 'utils/productsArray'
 
 type Props = {
     title: string
