@@ -1,6 +1,5 @@
 import { Button, Card, CardActions, CardContent } from '@mui/material'
 import './ProductsListItem.scss'
-import productsArray from 'utils/productsArray'
 
 type Props = {
     title: string
@@ -15,8 +14,8 @@ const ProductsListItem = ({
     description,
     type,
     capacity,
-    price,}:
-     Props) => {
+    price,
+}: Props) => {
     return (
         <Card variant="outlined">
             <CardContent>
