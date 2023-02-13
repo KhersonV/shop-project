@@ -32,17 +32,18 @@ const ProductsListItem = ({
     }
 
     const onDecrement = () => {
-        if(count <= 1){
-        setCount(count )
+        if (count <= 1) {
+            setCount(count)
+        } else {
+            setCount(count - 1)
+        }
     }
-    else{setCount(count - 1) }
-}
 
     return (
         <Card variant="outlined">
             <CardContent>
                 <div className="product-image">
-                    <img src={image} alt="image" />
+                    <img src={image} alt="" />
                 </div>
                 <div className="product-title">{title}</div>
                 <div className="product-desc">{description}</div>
