@@ -35,6 +35,8 @@ const ProductsListItem = ({
         setCount(count - 1)
     }
 
+    const addToCart = () => {}
+
     return (
         <Card variant="outlined">
             <CardContent>
@@ -65,7 +67,9 @@ const ProductsListItem = ({
                 </div>
             </CardContent>
             <CardActions className="product-btn-wrap">
-                <Button variant="outlined">Add to cart</Button>
+                <Button variant="outlined" onClick={() => addToCart()}>
+                    Add to cart
+                </Button>
             </CardActions>
         </Card>
     )
