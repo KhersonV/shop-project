@@ -7,7 +7,6 @@ import Home from 'pages/Home/Home'
 import { Container } from '@mui/system'
 import { Routes, Route } from 'react-router-dom'
 import CartPage from 'pages/CartPage/CartPage'
-import {getProductsObject, Product } from 'utils/productsArray'
 
 type Props = {
    
@@ -15,6 +14,7 @@ type Props = {
 
 type ProductsInCart = {
     [id: number]: number
+    
 }
 
 const App = (props: Props) => {

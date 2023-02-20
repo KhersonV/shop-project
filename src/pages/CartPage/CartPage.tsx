@@ -1,4 +1,5 @@
 import productsArray, { getProductsObject, Product } from 'utils/productsArray'
+import './CartPage.scss'
 
 type Props = {
     productsInCart: {
@@ -16,11 +17,33 @@ const CartPage = ({
     return (
         <div>
             {Object.keys(productsInCart).map((productId) => (
-                <div className="test" key={productId}>
-                    {productsObject[parseInt(productId)].title}:{' quantity '}
-                    {productsInCart[parseInt(productId)]}:
-                    {' price for 1 product: '}
-                    {productsObject[parseInt(productId)].price}
+                <div className="cont-test">
+                    <div className="test" key={productId}>
+                        <div className="">
+                            {' '}
+                            <img
+                                className="img-in-cart"
+                                src={productsObject[parseInt(productId)].image}
+                                alt=""
+                            />{' '}
+                        </div>
+                        <div className="">
+                            {' '}
+                            {productsObject[parseInt(productId)].title}:{' '}
+                        </div>
+                        <div className="">
+                            {productsObject[parseInt(productId)].description}:{' '}
+                        </div>
+                        <div className="">
+                            {' Capacity: '}{' '}
+                            {productsObject[parseInt(productId)].capacity}{' '}
+                            {'GB'}
+                        </div>
+                        <div className="">
+                            {' Price: '}
+                            {productsObject[parseInt(productId)].price}
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>
