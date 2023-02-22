@@ -1,5 +1,6 @@
 import productsArray, { getProductsObject, Product } from 'utils/productsArray'
 import './CartPage.scss'
+import CartTotal from 'copmonents/CartTotal/CartTotal'
 
 type Props = {
     productsInCart: {
@@ -15,37 +16,21 @@ const CartPage = ({
     productsObject = getProductsObject(productsArray),
 }: Props) => {
     return (
-        <div>
-            {Object.keys(productsInCart).map((productId) => (
-                <div className="cont-test">
+        <div className="">
+            <div>
+                {Object.keys(productsInCart).map((productId) => (
                     <div className="test" key={productId}>
-                        <div className="">
-                            {' '}
-                            <img
-                                className="img-in-cart"
-                                src={productsObject[parseInt(productId)].image}
-                                alt=""
-                            />{' '}
-                        </div>
-                        <div className="">
-                            {' '}
-                            {productsObject[parseInt(productId)].title}:{' '}
-                        </div>
-                        <div className="">
-                            {productsObject[parseInt(productId)].description}:{' '}
-                        </div>
-                        <div className="">
-                            {' Capacity: '}{' '}
-                            {productsObject[parseInt(productId)].capacity}{' '}
-                            {'GB'}
-                        </div>
-                        <div className="">
-                            {' Price: '}
-                            {productsObject[parseInt(productId)].price}
-                        </div>
+                        {' '}
+                        {productsObject[parseInt(productId)].title} :{' '}
+                        {productsInCart[parseInt(productId)]}:{' '}
+                        {productsObject[parseInt(productId)].price}
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
+
+            <div className="">
+            <CartTotal productsInCart={productsInCart}/>
+            </div>
         </div>
     )
 }
