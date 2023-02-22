@@ -6,16 +6,13 @@ type Props = {
         [id: number]: number
     }
 }
+
 const CartHeader = ({ productsInCart }: Props) => {
     return (
         <div className="">
-            <div>
-                <CartProductList productsInCart={productsInCart} />
-            </div>
+            <CartProductList productsInCart={productsInCart} />
 
-            <div className="">
-                <CartTotal productsInCart={productsInCart} />
-            </div>
+            <CartTotal productsInCart={productsInCart} />
         </div>
     )
 }

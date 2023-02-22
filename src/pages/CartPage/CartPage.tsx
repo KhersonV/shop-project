@@ -1,5 +1,6 @@
 import CartTotal from 'copmonents/CartTotal/CartTotal'
 import CartProductList from 'copmonents/CartProductList/CartProductList'
+
 type Props = {
     productsInCart: {
         [id: number]: number
