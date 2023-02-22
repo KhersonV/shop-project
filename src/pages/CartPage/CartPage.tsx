@@ -1,36 +1,17 @@
-import productsArray, { getProductsObject, Product } from 'utils/productsArray'
-import './CartPage.scss'
 import CartTotal from 'copmonents/CartTotal/CartTotal'
-
+import CartProductList from 'copmonents/CartProductList/CartProductList'
 type Props = {
     productsInCart: {
         [id: number]: number
     }
-    productsObject?: {
-        [id: number]: Product
-    }
 }
 
-const CartPage = ({
-    productsInCart,
-    productsObject = getProductsObject(productsArray),
-}: Props) => {
+const CartPage = ({ productsInCart }: Props) => {
     return (
         <div className="">
-            <div>
-                {Object.keys(productsInCart).map((productId) => (
-                    <div className="test" key={productId}>
-                        {' '}
-                        {productsObject[parseInt(productId)].title} :{' '}
-                        {productsInCart[parseInt(productId)]}:{' '}
-                        {productsObject[parseInt(productId)].price}
-                    </div>
-                ))}
-            </div>
+            <CartProductList productsInCart={productsInCart} />
 
-            <div className="">
-            <CartTotal productsInCart={productsInCart}/>
-            </div>
+            <CartTotal productsInCart={productsInCart} />
         </div>
     )
 }
