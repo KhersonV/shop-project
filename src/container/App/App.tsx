@@ -8,17 +8,17 @@ import { Container } from '@mui/system'
 import { Routes, Route } from 'react-router-dom'
 import CartPage from 'pages/CartPage/CartPage'
 
-type Props = {
-   
-}
+type Props = {}
 
 type ProductsInCart = {
     [id: number]: number
-    
 }
 
 const App = (props: Props) => {
-    const [productsInCart, setProductsInCart] = useState<ProductsInCart>({})
+    const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
+        1: 3,
+        2: 5,
+    })
 
     const addProductToCart = (id: number, count: number) => {
         setProductsInCart((prevState) => ({
@@ -37,7 +37,10 @@ const App = (props: Props) => {
                         path="/"
                         element={<Home addProductToCart={addProductToCart} />}
                     />
-                    <Route path="cart" element={<CartPage productsInCart={productsInCart}  />} />
+                    <Route
+                        path="cart"
+                        element={<CartPage productsInCart={productsInCart} />}
+                    />
                 </Routes>
             </Container>
 
