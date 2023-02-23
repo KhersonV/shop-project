@@ -5,7 +5,7 @@ import { Product } from 'utils/productsArray'
 type Props = {
     product: Product
     productCount: number
-    removeProductFromCart: (id:number) => void
+    removeProductFromCart: (id: number) => void
 }
 
 const CartProductListItemExtended = ({
