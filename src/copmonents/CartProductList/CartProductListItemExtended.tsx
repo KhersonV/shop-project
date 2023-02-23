@@ -2,11 +2,14 @@ import { Button, Card, CardActions, CardContent, Grid } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Product } from 'utils/productsArray'
 
+
 type Props = {
     product: Product
     productCount: number
 }
+
 const CartProductListItemExtended = ({ product, productCount }: Props) => {
+
     return (
         
             <Grid item xs={12} sm={4}>
