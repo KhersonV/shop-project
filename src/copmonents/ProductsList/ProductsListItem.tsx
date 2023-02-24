@@ -5,11 +5,13 @@ import {
     CardContent,
     TextField,
 } from '@mui/material'
+import Quantity from 'copmonents/Quantity/Quantity'
 import { useState } from 'react'
 import './ProductsListItem.scss'
 
 type Props = {
     addProductToCart: (count: number, price: number) => void
+    id: number
     title: string
     description: string
     type: string
@@ -20,6 +22,7 @@ type Props = {
 
 const ProductsListItem = ({
     addProductToCart,
+    id,
     title,
     description,
     type,
@@ -37,7 +40,6 @@ const ProductsListItem = ({
         setCount((prevState) => prevState - 1)
     }
 
-    
     return (
         <Card variant="outlined">
             <CardContent>
@@ -49,26 +51,17 @@ const ProductsListItem = ({
                 <div className="product-features">Type: {type}</div>
                 <div className="product-features">{capacity} GB</div>
                 <div className="product-price">{price}</div>
-                <div className="product-quantity">
-                    <Button
-                        variant="outlined"
-                        onClick={() => onDecrement()}
-                        disabled={count <= 1}
-                    >
-                        -
-                    </Button>
-                    <TextField size="small" value={count} />
-                    <Button
-                        variant="outlined"
-                        onClick={() => onIncrement()}
-                        disabled={count >= 10}
-                    >
-                        +
-                    </Button>
-                </div>
+                <Quantity
+                    count={count}
+                    onIncrement={onIncrement}
+                    onDecrement={onDecrement}
+                />
             </CardContent>
             <CardActions className="product-btn-wrap">
-                <Button variant="outlined" onClick={() => addProductToCart(count ,price )}>
+                <Button
+                    variant="outlined"
+                    onClick={() => addProductToCart(id, count)}
+                >
                     Add to cart
                 </Button>
             </CardActions>

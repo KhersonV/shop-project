@@ -3,11 +3,11 @@ import ProductsList from 'copmonents/ProductsList/ProductsList'
 type Props = {
     addProductToCart: (count: number, price: number) => void
 }
-const Home = ({addProductToCart}: Props) => {
+const Home = ({ addProductToCart }: Props) => {
     return (
         <div>
             {' '}
-            <ProductsList addProductToCart = {addProductToCart}/>{' '}
+            <ProductsList addProductToCart={addProductToCart} />
         </div>
     )
 }
