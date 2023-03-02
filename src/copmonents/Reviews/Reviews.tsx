@@ -62,7 +62,6 @@ const Reviews = (props: Props) => {
         }
     }
 
-    console.log(newReview)
     return (
         <>
             <Typography variant="h4" component="h2" sx={{ margin: '60px 0' }}>
