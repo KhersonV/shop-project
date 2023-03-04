@@ -5,6 +5,7 @@ import './ProductsListItem.scss'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'copmonents/redux/hooks'
+import { addLike, removeLike } from 'copmonents/redux/likeReducer'
 
 type Props = {
     addProductToCart: (count: number, price: number) => void
@@ -37,11 +38,19 @@ const ProductsListItem = ({
         setCount((prevState) => prevState - 1)
     }
     const isLiked = useAppSelector((state) => state.productsLikeState[id])
+    const dispatch = useAppDispatch()
 
     return (
         <Card variant="outlined">
             <CardContent>
-                <Button variant="outlined">
+                <Button
+                    variant="outlined"
+                    onClick={() =>
+                        isLiked
+                            ? dispatch(removeLike(id))
+                            : dispatch(addLike(id))
+                    }
+                >
                     {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 </Button>
                 <div className="product-image">
