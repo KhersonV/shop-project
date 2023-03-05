@@ -6,9 +6,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'copmonents/redux/hooks'
 import { addLike, removeLike } from 'copmonents/redux/likeReducer'
+import { addProductToCart } from 'copmonents/redux/cartReducer'
 
 type Props = {
-    addProductToCart: (count: number, price: number) => void
+    addProductToCart?: (count: number, price: number) => void
     id: number
     title: string
     description: string
@@ -19,7 +20,6 @@ type Props = {
 }
 
 const ProductsListItem = ({
-    addProductToCart,
     id,
     title,
     description,
@@ -70,7 +70,14 @@ const ProductsListItem = ({
             <CardActions className="product-btn-wrap">
                 <Button
                     variant="outlined"
-                    onClick={() => addProductToCart(id, count)}
+                    onClick={() =>
+                        dispatch(
+                            addProductToCart({
+                                id,
+                                count,
+                            })
+                        )
+                    }
                 >
                     Add to cart
                 </Button>

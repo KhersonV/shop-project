@@ -2,16 +2,12 @@ import CartTotal from 'copmonents/CartTotal/CartTotal'
 import CartProductList from 'copmonents/CartProductList/CartProductList'
 import { Grid, Typography } from '@mui/material'
 import CartProductListItemExtended from 'copmonents/CartProductList/CartProductListItemExtended'
+import { useAppSelector } from 'copmonents/redux/hooks'
 
-type Props = {
-    productsInCart: {
-        [id: number]: number
-    }
-    removeProductFromCart: (id:number) => void
-    changeProductQuantity: (id:number ,count:number) =>void
-}
 
-const CartPage = ({ productsInCart, removeProductFromCart,changeProductQuantity}: Props) => {
+
+const CartPage = () => {
+    const productsInCart = useAppSelector((state) => state.productsInCart)
     return (
         <div className="">
             <Typography
@@ -25,8 +21,6 @@ const CartPage = ({ productsInCart, removeProductFromCart,changeProductQuantity}
             </Typography>
             <Grid container spacing={4}>
                 <CartProductList
-                    changeProductQuantity={changeProductQuantity}
-                    removeProductFromCart={removeProductFromCart}
                     productsInCart={productsInCart}
                     CartItem={CartProductListItemExtended}
                 />
