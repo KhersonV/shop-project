@@ -9,7 +9,7 @@ type Props = {
         [id: number]: HomeProduct
     }
 }
-const HomeWork = ({}: Props) => {
+const HomeWork = (props: Props) => {
     const [currencyType, setCurrencyType] = useState<string>('USD')
 
     const [exchangeRate, setExchangeRate] = useState<number>(1)
