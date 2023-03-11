@@ -3,8 +3,7 @@ import CartProductList from 'copmonents/CartProductList/CartProductList'
 import { Grid, Typography } from '@mui/material'
 import CartProductListItemExtended from 'copmonents/CartProductList/CartProductListItemExtended'
 import { useAppSelector } from 'copmonents/redux/hooks'
-
-
+import { Link } from 'react-router-dom'
 
 const CartPage = () => {
     const productsInCart = useAppSelector((state) => state.productsInCart)
@@ -26,6 +25,7 @@ const CartPage = () => {
                 />
             </Grid>
             <CartTotal productsInCart={productsInCart} />
+            <Link to="/checkout">Proceed to checkout</Link>
         </div>
     )
 }
