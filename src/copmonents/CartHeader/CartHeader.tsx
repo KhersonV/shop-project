@@ -1,14 +1,14 @@
-type Props = {
-    cartData: {
-        totalCount: number
-        totalPrice: number
-    }
-}
-const CartHeader = ({cartData}: Props) => {
+import CartProductList from 'copmonents/CartProductList/CartProductList'
+import CartTotal from 'copmonents/CartTotal/CartTotal'
+import { useAppSelector } from 'copmonents/redux/hooks'
+
+const CartHeader = () => {
+    const productsInCart = useAppSelector((state) => state.productsInCart)
     return (
-        <div>
-            <div>{cartData.totalCount}</div>
-            <div>$ {cartData.totalPrice}</div>
+        <div className="">
+            <CartProductList productsInCart={productsInCart} />
+
+            <CartTotal productsInCart={productsInCart} />
         </div>
     )
 }

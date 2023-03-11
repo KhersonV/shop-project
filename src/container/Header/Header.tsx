@@ -8,13 +8,7 @@ import Logo from 'copmonents/Logo/Logo'
 import Menu from 'copmonents/Menu/Menu'
 import CartHeader from 'copmonents/CartHeader/CartHeader'
 
-type Props = {
-    cartData: {
-        totalCount: number
-        totalPrice: number
-    }
-}
-const Header = ({cartData}: Props) => {
+const Header = () => {
     return (
         <AppBar className="app-bar" position="static">
             <Container>
@@ -30,7 +24,7 @@ const Header = ({cartData}: Props) => {
                     </IconButton>
                     <Logo />
                     <Menu />
-                    <CartHeader cartData={cartData} />
+                    <CartHeader  />
                 </Toolbar>
             </Container>
         </AppBar>

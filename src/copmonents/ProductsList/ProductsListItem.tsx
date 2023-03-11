@@ -1,15 +1,16 @@
-import {
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    TextField,
-} from '@mui/material'
+import { Button, Card, CardActions, CardContent } from '@mui/material'
+import Quantity from 'copmonents/Quantity/Quantity'
 import { useState } from 'react'
 import './ProductsListItem.scss'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import { useAppDispatch, useAppSelector } from 'copmonents/redux/hooks'
+import { addLike, removeLike } from 'copmonents/redux/likeReducer'
+import { addProductToCart } from 'copmonents/redux/cartReducer'
 
 type Props = {
-    addProductToCart: (count: number, price: number) => void
+    addProductToCart?: (count: number, price: number) => void
+    id: number
     title: string
     description: string
     type: string
@@ -19,7 +20,7 @@ type Props = {
 }
 
 const ProductsListItem = ({
-    addProductToCart,
+    id,
     title,
     description,
     type,
@@ -36,11 +37,22 @@ const ProductsListItem = ({
     const onDecrement = () => {
         setCount((prevState) => prevState - 1)
     }
+    const isLiked = useAppSelector((state) => state.productsLikeState[id])
+    const dispatch = useAppDispatch()
 
-    
     return (
         <Card variant="outlined">
             <CardContent>
+                <Button
+                    variant="outlined"
+                    onClick={() =>
+                        isLiked
+                            ? dispatch(removeLike(id))
+                            : dispatch(addLike(id))
+                    }
+                >
+                    {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                </Button>
                 <div className="product-image">
                     <img src={image} alt="" />
                 </div>
@@ -49,26 +61,24 @@ const ProductsListItem = ({
                 <div className="product-features">Type: {type}</div>
                 <div className="product-features">{capacity} GB</div>
                 <div className="product-price">{price}</div>
-                <div className="product-quantity">
-                    <Button
-                        variant="outlined"
-                        onClick={() => onDecrement()}
-                        disabled={count <= 1}
-                    >
-                        -
-                    </Button>
-                    <TextField size="small" value={count} />
-                    <Button
-                        variant="outlined"
-                        onClick={() => onIncrement()}
-                        disabled={count >= 10}
-                    >
-                        +
-                    </Button>
-                </div>
+                <Quantity
+                    count={count}
+                    onIncrement={onIncrement}
+                    onDecrement={onDecrement}
+                />
             </CardContent>
             <CardActions className="product-btn-wrap">
-                <Button variant="outlined" onClick={() => addProductToCart(count ,price )}>
+                <Button
+                    variant="outlined"
+                    onClick={() =>
+                        dispatch(
+                            addProductToCart({
+                                id,
+                                count,
+                            })
+                        )
+                    }
+                >
                     Add to cart
                 </Button>
             </CardActions>
